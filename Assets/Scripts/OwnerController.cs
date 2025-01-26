@@ -63,6 +63,12 @@ public class OwnerController : MonoBehaviour
         if (isTurningBack) return;
         isTurningBack = true;
         
+        // Check the cat paw's status, if it is in animation, end the game
+        if (CatController.Instance.IsCatPoppingBubbles())
+        {
+            gameManager.EndGame(false);
+        }
+        
         if (ownerAnimator != null)
         {
             ownerAnimator.SetTrigger("OwnerTurningTrigger");
