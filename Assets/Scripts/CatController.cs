@@ -11,9 +11,8 @@ public class CatController : MonoBehaviour
     public AudioClip scratchingSound; // Assign the scratching sound in Inspector
     public AudioSource audioSource;
     
-    // Cooldown variables
-    // TODO(lydia): adjust this when further adjustments are made
-    public float moveDuration = 0.5f; 
+    public Animator lowerLeftPawAnimator;
+    
     private bool canPerformAction = true;
 
     public static CatController Instance { get; private set; }
@@ -47,6 +46,9 @@ public class CatController : MonoBehaviour
 
     private IEnumerator MovePawCoroutine(Vector3 targetPosition, BubbleController bubble)
     {
+        // trigger the lower left cat's paw move
+        lowerLeftPawAnimator.SetTrigger("PawMoveTrigger");
+        
         canPerformAction = false;
         Vector3 originalPosition = transform.position;
         float moveDuration = 0.5f; // Total time for the paw to move to the target

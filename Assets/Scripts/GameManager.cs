@@ -11,12 +11,15 @@ public class GameManager : MonoBehaviour
     public OwnerController ownerController;
     public BubbleManager bubbleManager;
     
-    // TODO(remove): import the text TMP
     public TMPro.TextMeshProUGUI ownerStatusText;
     public GameObject winPopup;
     public TMPro.TextMeshProUGUI gameOverText;
+    
     public AudioSource bgmSource;
     public AudioClip bgmClip; // Assign the BGM audio clip in Inspector
+    public AudioClip winSound; // Assign this in the Inspector
+    public AudioClip loseSound; // Assign this in the Inspector
+    public AudioSource sfxSource; // Assign this in the Inspector (can use the same AudioSource or a new one)
     
     // Game state properties
     // private int poppedBubblesCount = 0;
@@ -82,12 +85,21 @@ public class GameManager : MonoBehaviour
         // Notify other components
         ownerController.StopOwnerActivity();
         CatController.Instance.DisableCatInteraction();
-
+        
         Debug.Log("Game Over! " + (win ? "You win!" : "You lose!"));
-
-        // TODO(lydia): Add game-over screen with winning/losing message
-        gameOverText.text = win ? "You win!" : "You lose!";
+        gameOverText.text = win ? "You Win!" : "You Lose!";
         winPopup.SetActive(true);
+        
+        if (sfxSource != null)
+        {
+            sfxSource.Stop();
+            sfxSource.clip = win ? winSound : loseSound;
+            sfxSource.Play();
+        }
+        else
+        {
+            Debug.LogError("AudioSource is not assigned in the Inspector.");
+        }
         
         bgmSource.Stop();
     }
@@ -102,6 +114,12 @@ public class GameManager : MonoBehaviour
     
         // Call StartGame to reset and begin the game
         StartGame();
+    }
+    
+    // Getter for isGameActive
+    public bool IsGameActive()
+    {
+        return isGameActive;
     }
 
 }

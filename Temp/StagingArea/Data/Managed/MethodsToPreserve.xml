@@ -3,5 +3,8 @@
 		<type fullname="GameManager">
 			<method name="RestartGame"/>
 		</type>
+		<type fullname="MenuPageManager">
+			<method name="StartGame"/>
+		</type>
 	</assembly>
 </linker>

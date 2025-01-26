@@ -4,8 +4,11 @@
 		<type fullname="BubbleController" preserve="nothing"/>
 		<type fullname="BubbleManager" preserve="nothing"/>
 		<type fullname="CatController" preserve="nothing"/>
+		<type fullname="EyeBlinkAnimation" preserve="nothing"/>
 		<type fullname="GameManager" preserve="nothing"/>
+		<type fullname="MenuPageManager" preserve="nothing"/>
 		<type fullname="OwnerController" preserve="nothing"/>
+		<type fullname="TailRandomAnimation" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Unity.2D.Animation.Runtime">
 		<type fullname="UnityEngine.U2D.Animation.BufferManager" preserve="nothing"/>
@@ -31,7 +34,6 @@
 		<type fullname="UnityEditor.TagManager" preserve="nothing"/>
 		<type fullname="UnityEditor.TimeManager" preserve="nothing"/>
 		<type fullname="UnityEditor.VFXManager" preserve="nothing"/>
-		<type fullname="UnityEngine.Animation" preserve="nothing"/>
 		<type fullname="UnityEngine.AnimationClip" preserve="nothing"/>
 		<type fullname="UnityEngine.Animator" preserve="nothing"/>
 		<type fullname="UnityEngine.AudioBehaviour" preserve="nothing"/>

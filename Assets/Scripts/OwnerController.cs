@@ -7,13 +7,13 @@ public class OwnerController : MonoBehaviour
 {
     // Reference to GameManager
     public GameManager gameManager;
+    public Animator ownerAnimator;
 
     // State properties
     [SerializeField] private TextMeshProUGUI ownerStatusText;
     private bool isTurningBack = false; // Tracks if the owner is turning back
 
     // Timer properties
-    // TODO(lydia): adjust this when further adjustments are made
     public float minCheckInterval = 3.0f; // Minimum time before the owner checks
     public float maxCheckInterval = 6.0f; // Maximum time before the owner checks
 
@@ -65,16 +65,21 @@ public class OwnerController : MonoBehaviour
 
         // TODO(lydia): this is for demo purpose only
         // Show the "Turning" text
-        if (ownerStatusText != null)
+        if (ownerAnimator != null)
         {
-            ownerStatusText.gameObject.SetActive(true);
+            ownerAnimator.SetTrigger("OwnerTurningTrigger");
         }
+        else
+        {
+            Debug.LogError("OwnerAnimator is not assigned in the Inspector.");
+        }
+
         
         // Simulate the owner turning back
         CheckCat();
 
-        // After checking, simulate the owner turning away
-        StartCoroutine(TurnAwayAfterCheck());
+        // After checking, set turning indicator to false
+        isTurningBack = false;
     }
 
     private void CheckCat()
@@ -95,22 +100,6 @@ public class OwnerController : MonoBehaviour
         else
         {
             Debug.LogWarning("OwnerController is missing a reference to GameManager!");
-        }
-    }
-
-    private IEnumerator TurnAwayAfterCheck()
-    {
-        // Simulate a delay for turning back
-        yield return new WaitForSeconds(1.0f);
-
-        // Owner stops checking
-        isTurningBack = false;
-        
-        // TODO(lydia): Demo purpose only
-        // Hide the "Turning" text
-        if (ownerStatusText != null)
-        {
-            ownerStatusText.gameObject.SetActive(false);
         }
     }
 
