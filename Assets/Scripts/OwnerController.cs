@@ -16,7 +16,8 @@ public class OwnerController : MonoBehaviour
     // Timer properties
     public float minCheckInterval = 3.0f; // Minimum time before the owner checks
     public float maxCheckInterval = 6.0f; // Maximum time before the owner checks
-
+    public float ownerAnimationLength = 1.0f; // This need to match with the actual animation length!
+    
     private Coroutine turnBackCoroutine;
 
     private void Start()
@@ -60,26 +61,32 @@ public class OwnerController : MonoBehaviour
     private void TurnBack()
     {
         if (isTurningBack) return;
-
         isTurningBack = true;
-
-        // TODO(lydia): this is for demo purpose only
-        // Show the "Turning" text
+        
         if (ownerAnimator != null)
         {
             ownerAnimator.SetTrigger("OwnerTurningTrigger");
+            StartCoroutine(WaitForAnimationToEnd("OwnerTurningTrigger"));
         }
         else
         {
             Debug.LogError("OwnerAnimator is not assigned in the Inspector.");
         }
 
-        
-        // Simulate the owner turning back
-        CheckCat();
-
         // After checking, set turning indicator to false
         isTurningBack = false;
+    }
+    
+    private IEnumerator WaitForAnimationToEnd(string animationName)
+    {
+        Debug.LogWarning("))(@e@@@!@OwnerController: Waiting for animation to end.");
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(ownerAnimationLength);
+        // Debug.LogWarning("!@##StateInfo.length: " + stateInfo.length);
+
+        // Call CheckCat after the animation finishes
+        CheckCat();
+        isTurningBack = false; // Reset the turning indicator
     }
 
     private void CheckCat()
@@ -105,6 +112,7 @@ public class OwnerController : MonoBehaviour
 
     public bool IsOwnerChecking()
     {
+        Debug.Log("!!@@@@isTurningBack: " + isTurningBack);
         return isTurningBack;
     }
 }
