@@ -99,7 +99,8 @@
             "fullManagedTypeName": "",
             "moduleName": "Audio",
             "usedInScenes": [
-                "Assets/Scenes/MainScene.unity"
+                "Assets/Scenes/MainScene.unity",
+                "Assets/Scenes/Menu.unity"
             ]
         },
         {
@@ -232,7 +233,8 @@
             "fullManagedTypeName": "UnityEngine.AudioClip",
             "moduleName": "Audio",
             "usedInScenes": [
-                "Assets/Scenes/MainScene.unity"
+                "Assets/Scenes/MainScene.unity",
+                "Assets/Scenes/Menu.unity"
             ]
         },
         {
@@ -251,7 +253,8 @@
             "fullManagedTypeName": "UnityEngine.AudioSource",
             "moduleName": "Audio",
             "usedInScenes": [
-                "Assets/Scenes/MainScene.unity"
+                "Assets/Scenes/MainScene.unity",
+                "Assets/Scenes/Menu.unity"
             ]
         },
         {
@@ -261,6 +264,15 @@
             "moduleName": "Core",
             "usedInScenes": [
                 "Assets/Scenes/MainScene.unity",
+                "Assets/Scenes/Menu.unity"
+            ]
+        },
+        {
+            "managedAssemblyName": "UnityEngine.dll",
+            "nativeClass": "BoxCollider2D",
+            "fullManagedTypeName": "UnityEngine.BoxCollider2D",
+            "moduleName": "Physics2D",
+            "usedInScenes": [
                 "Assets/Scenes/Menu.unity"
             ]
         },
@@ -309,7 +321,8 @@
             "fullManagedTypeName": "UnityEngine.Collider2D",
             "moduleName": "Physics2D",
             "usedInScenes": [
-                "Assets/Scenes/MainScene.unity"
+                "Assets/Scenes/MainScene.unity",
+                "Assets/Scenes/Menu.unity"
             ]
         },
         {

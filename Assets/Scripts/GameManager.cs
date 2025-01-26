@@ -122,5 +122,9 @@ public class GameManager : MonoBehaviour
         return isGameActive;
     }
 
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
 

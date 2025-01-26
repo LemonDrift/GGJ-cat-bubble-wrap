@@ -84,6 +84,7 @@
      <Compile Include="Assets/Scripts/EyeBlinkAnimation.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextMeshProFloatingText.cs" />
      <Compile Include="Assets/Scripts/OwnerController.cs" />
+     <Compile Include="Assets/Scripts/AudioManager.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/ShaderPropAnimator.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/CameraController.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark03.cs" />
@@ -142,6 +143,7 @@
      <Folder Include="Assets/TextMesh Pro/Documentation" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
+     <Folder Include="Assets/Animations" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials" />
      <Folder Include="Assets/TextMesh Pro/Examples &amp; Extras/Resources/Color Gradient Presets" />
      <None Include="Assets/TextMesh Pro/Sprites/EmojiOne.json" />
