@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,14 @@ public class GameManager : MonoBehaviour
 {
     // References to other controllers
     public OwnerController ownerController;
-    public CatController catController;
     public BubbleManager bubbleManager;
     
     // TODO(remove): import the text TMP
     public TMPro.TextMeshProUGUI ownerStatusText;
     public GameObject winPopup;
     public TMPro.TextMeshProUGUI gameOverText;
+    public AudioSource bgmSource;
+    public AudioClip bgmClip; // Assign the BGM audio clip in Inspector
     
     // Game state properties
     // private int poppedBubblesCount = 0;
@@ -25,17 +27,50 @@ public class GameManager : MonoBehaviour
         // Initialize the game
         StartGame();
         Debug.Log("OwnerStatusText active: " + ownerStatusText.gameObject.activeSelf);
-
     }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) // Detect left mouse click
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     
+            // Perform a 2D raycast to detect the clicked collider
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+    
+            if (hit.collider != null)
+            {
+                // Check if it's a bubble
+                BubbleController bubble = hit.collider.GetComponent<BubbleController>();
+                if (bubble != null)
+                {
+                    bubble.OnMouseDown(); // Manually call bubble's OnMouseDown
+                    return; // Stop further processing
+                }
+    
+                // Check if it's the background
+                BackgroundClickHandler background = hit.collider.GetComponent<BackgroundClickHandler>();
+                if (background != null)
+                {
+                    background.OnMouseDown(); // Manually call background's OnMouseDown
+                }
+            }
+        }
+    }
+
     public void StartGame()
     {
         // Reset variables and start the game
         isGameActive = true;
         
+        // Play the background music
+        bgmSource.clip = bgmClip;
+        bgmSource.loop = true;
+        bgmSource.Play();
+        
         // Notify other components to initialize their states
         ownerController.StartOwnerActivity();
-        catController.EnableCatInteraction();
+        CatController.Instance.Start();
         bubbleManager.ResetBubbleWrap();
     }
     
@@ -46,7 +81,7 @@ public class GameManager : MonoBehaviour
         
         // Notify other components
         ownerController.StopOwnerActivity();
-        catController.DisableCatInteraction();
+        CatController.Instance.DisableCatInteraction();
 
         Debug.Log("Game Over! " + (win ? "You win!" : "You lose!"));
 
@@ -54,21 +89,9 @@ public class GameManager : MonoBehaviour
         gameOverText.text = win ? "You win!" : "You lose!";
         winPopup.SetActive(true);
         
-        
+        bgmSource.Stop();
     }
     
-    // public void IncrementPoppedBubbles()
-    // {
-    //     // Increment the counter for popped bubbles
-    //     poppedBubblesCount++;
-    //     Debug.Log("Bubbles Popped: " + poppedBubblesCount);
-    //     
-    //     // Check for win conditions
-    //     if (poppedBubblesCount >= bubbleManager.GetTotalBubbleCount())
-    //     {
-    //         EndGame();
-    //     }
-    // }
     public void RestartGame()
     {
         // Reset game variables if needed

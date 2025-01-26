@@ -7,7 +7,6 @@ public class OwnerController : MonoBehaviour
 {
     // Reference to GameManager
     public GameManager gameManager;
-    public CatController catController;
 
     // State properties
     [SerializeField] private TextMeshProUGUI ownerStatusText;
@@ -63,7 +62,6 @@ public class OwnerController : MonoBehaviour
         if (isTurningBack) return;
 
         isTurningBack = true;
-        Debug.Log("Owner is turning back to check!");
 
         // TODO(lydia): this is for demo purpose only
         // Show the "Turning" text
@@ -84,7 +82,7 @@ public class OwnerController : MonoBehaviour
         if (gameManager != null)
         {
             // Check if the cat is actively popping bubbles
-            if (catController.IsCatPoppingBubbles())
+            if (CatController.Instance.IsCatPoppingBubbles())
             {
                 Debug.Log("Owner caught the cat popping bubbles!");
                 gameManager.EndGame(false);
@@ -107,7 +105,6 @@ public class OwnerController : MonoBehaviour
 
         // Owner stops checking
         isTurningBack = false;
-        Debug.Log("Owner turned away.");
         
         // TODO(lydia): Demo purpose only
         // Hide the "Turning" text

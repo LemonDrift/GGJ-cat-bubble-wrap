@@ -8,52 +8,95 @@ public class CatController : MonoBehaviour
     public GameManager gameManager;
     public BubbleManager bubbleManager;
     public OwnerController ownerController;
+    public AudioClip scratchingSound; // Assign the scratching sound in Inspector
+    public AudioSource audioSource;
     
     // Cooldown variables
     // TODO(lydia): adjust this when further adjustments are made
-    public float actionCooldown = 0.5f; 
+    public float moveDuration = 0.5f; 
     private bool canPerformAction = true;
-    
-    private void Update()
+
+    public static CatController Instance { get; private set; }
+
+    private void Awake()
     {
-        // Check for player input (mouse click or touch)
-        if (Input.GetMouseButtonDown(0) && canPerformAction)
+        if (Instance == null)
         {
-            PerformPawAction();
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // Ensure only one instance exists
         }
     }
-
-    private void PerformPawAction()
+    
+    public void PerformPawAction(BubbleController bubble = null)
     {
         // Check if the owner is currently checking on the cat
         if (gameManager != null && ownerController.IsOwnerChecking())
         {
-            Debug.Log("Game Over: Owner caught the cat trying to pop bubbles!");
             gameManager.EndGame(false);
             return;
         }
         
-        // If safe, perform the paw action
-        Debug.Log("Cat paw action performed!");
-        StartCoroutine(StartCooldown());
+        // Adjust target position in y axis to match the bubble's position
+        Vector3 targetPosition = bubble != null ? bubble.transform.position : Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        targetPosition.y -= 450;
+        StartCoroutine(MovePawCoroutine(targetPosition, bubble));
     }
 
-    private IEnumerator StartCooldown()
+    private IEnumerator MovePawCoroutine(Vector3 targetPosition, BubbleController bubble)
     {
         canPerformAction = false;
-        yield return new WaitForSeconds(actionCooldown);
+        Vector3 originalPosition = transform.position;
+        float moveDuration = 0.5f; // Total time for the paw to move to the target
+        float elapsedTime = 0f;
+
+        // Move the paw to the target position
+        while (elapsedTime < moveDuration)
+        {
+            transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / moveDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Add scratching sound effect
+        audioSource.PlayOneShot(scratchingSound);
+        
+        // If there's a bubble, notify it to pop. Add loggings
+        if (bubble != null)
+        {
+            bubble.PopBubble();
+        }
+        else
+        {
+            Debug.Log("Cat paw action performed! No bubble to pop.");
+        }
+        
+        // Move the paw back to the original position
+        elapsedTime = 0f; // Reset elapsed time for the return trip
+        while (elapsedTime < moveDuration)
+        {
+            transform.position = Vector3.Lerp(targetPosition, originalPosition, elapsedTime / moveDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = originalPosition; // Ensure it snaps back exactly to the original position
+        
+        // Ready to receive the next popping action
         canPerformAction = true;
     }
-
+    
     public bool IsCatPoppingBubbles()
     {
         return !canPerformAction;
     }
     
-    public void EnableCatInteraction()
+    public void Start()
     {
         // TODO(lydia): we need to seperate canPerformAction from gameStart flag
         canPerformAction = true; // Allow the cat to interact with bubbles
+        transform.position = new Vector3(120, -900, 0);
         Debug.Log("Cat interaction enabled.");
     }
 

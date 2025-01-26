@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 552154281797932137}
   - component: {fileID: 599648546203989666}
-  - component: {fileID: 3519965606639669759}
   - component: {fileID: 7435744038115810794}
+  - component: {fileID: 237734638639709632}
+  - component: {fileID: 1184071528654061335}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
@@ -86,8 +87,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &3519965606639669759
-CircleCollider2D:
+--- !u!114 &7435744038115810794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371637309271457699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6948bf6dce349b5acb1214dcfa922c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &237734638639709632
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -115,21 +128,84 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &7435744038115810794
-MonoBehaviour:
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.4, y: 2.4}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.59999996, y: -0.39}
+      - {x: 0.68, y: -0.22999999}
+      - {x: 0.71, y: -0.13}
+      - {x: 0.71, y: 0.24}
+      - {x: 0.64, y: 0.42}
+      - {x: 0.55, y: 0.55}
+      - {x: 0.42999998, y: 0.65999997}
+      - {x: 0.35999998, y: 0.71}
+      - {x: 0.28, y: 0.76}
+      - {x: 0.22, y: 0.78999996}
+      - {x: 0.06, y: 0.83}
+      - {x: -0.26, y: 0.83}
+      - {x: -0.42999998, y: 0.76}
+      - {x: -0.55, y: 0.69}
+      - {x: -0.64, y: 0.61}
+      - {x: -0.7, y: 0.53999996}
+      - {x: -0.81, y: 0.37}
+      - {x: -0.88, y: 0.16}
+      - {x: -0.88, y: -0.049999997}
+      - {x: -0.84, y: -0.24}
+      - {x: -0.78, y: -0.39}
+      - {x: -0.71, y: -0.48}
+      - {x: -0.53999996, y: -0.65}
+      - {x: -0.45999998, y: -0.69}
+      - {x: -0.35, y: -0.72999996}
+      - {x: -0.19999999, y: -0.77}
+      - {x: 0, y: -0.77}
+      - {x: 0.14999999, y: -0.72999996}
+      - {x: 0.34, y: -0.64}
+      - {x: 0.52, y: -0.5}
+  m_UseDelaunayMesh: 0
+--- !u!58 &1184071528654061335
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371637309271457699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce6948bf6dce349b5acb1214dcfa922c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.027469406, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.8374027
