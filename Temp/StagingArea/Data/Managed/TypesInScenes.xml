@@ -1,8 +1,10 @@
 <linker>
 	<assembly fullname="Assembly-CSharp">
+		<type fullname="AudioManager" preserve="nothing"/>
 		<type fullname="BackgroundClickHandler" preserve="nothing"/>
 		<type fullname="BubbleController" preserve="nothing"/>
 		<type fullname="BubbleManager" preserve="nothing"/>
+		<type fullname="ButtonSoundEffect" preserve="nothing"/>
 		<type fullname="CatController" preserve="nothing"/>
 		<type fullname="EyeBlinkAnimation" preserve="nothing"/>
 		<type fullname="GameManager" preserve="nothing"/>
@@ -41,7 +43,6 @@
 		<type fullname="UnityEngine.AudioListener" preserve="nothing"/>
 		<type fullname="UnityEngine.AudioSource" preserve="nothing"/>
 		<type fullname="UnityEngine.Behaviour" preserve="nothing"/>
-		<type fullname="UnityEngine.BoxCollider2D" preserve="nothing"/>
 		<type fullname="UnityEngine.Camera" preserve="nothing"/>
 		<type fullname="UnityEngine.Canvas" preserve="nothing"/>
 		<type fullname="UnityEngine.CanvasRenderer" preserve="nothing"/>

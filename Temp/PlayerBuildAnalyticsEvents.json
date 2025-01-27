@@ -3,8 +3,8 @@
     {
       "type": "il2cppData",
       "msg": {
-        "build_event_id": "a2d65d34409544152b7b1d448e562a4f",
-        "node_executed": false,
+        "build_event_id": "05b8bb76e833a406095ac6f878a94b67",
+        "node_executed": true,
         "attribute_total_count_eager_static_constructor": 17,
         "attribute_total_count_set_option": 0,
         "attribute_total_count_generate_into_own_cpp_file": 0,
@@ -42,22 +42,43 @@
     {
       "type": "playerBuildTimingData",
       "msg": {
-        "build_event_id": "a2d65d34409544152b7b1d448e562a4f",
-        "build_player": 13903,
-        "preprocess_player": 44,
-        "produce_player_script_assemblies": 906,
-        "build_scripts_dlls": 11,
-        "writing_asset_files": 563,
-        "postprocess_built_player": 2648,
-        "node_summary_table": []
+        "build_event_id": "05b8bb76e833a406095ac6f878a94b67",
+        "build_player": 79337,
+        "preprocess_player": 49,
+        "produce_player_script_assemblies": 3260,
+        "build_scripts_dlls": 14,
+        "writing_asset_files": 732,
+        "postprocess_built_player": 65169,
+        "node_summary_table": [
+          {
+            "name": "Csc",
+            "duration": 347
+          },
+          {
+            "name": "Csc",
+            "duration": 218
+          },
+          {
+            "name": "Csc",
+            "duration": 347
+          },
+          {
+            "name": "UnityLinker.exe",
+            "duration": 3011
+          },
+          {
+            "name": "il2cpp.exe",
+            "duration": 5126
+          }
+        ]
       },
       "version": 1
     },
     {
       "type": "unityLinkerData",
       "msg": {
-        "build_event_id": "a2d65d34409544152b7b1d448e562a4f",
-        "node_executed": false,
+        "build_event_id": "05b8bb76e833a406095ac6f878a94b67",
+        "node_executed": true,
         "attribute_marked_count_always_link_assembly": 0,
         "attribute_swept_count_always_link_assembly": 0,
         "attribute_total_count_always_link_assembly": 0,

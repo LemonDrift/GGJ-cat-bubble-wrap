@@ -634,14 +634,6 @@
         "name": "Physics2D",
         "dependencies": [
           {
-            "name": "BoxCollider2D",
-            "scenes": [
-              "Assets/Scenes/Menu.unity"
-            ],
-            "dependencyType": 0,
-            "icon": null
-          },
-          {
             "name": "CircleCollider2D",
             "scenes": [
               "Assets/Scenes/MainScene.unity"

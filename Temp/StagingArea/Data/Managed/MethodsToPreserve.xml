@@ -6,6 +6,8 @@
 			<method name="RestartGame"/>
 		</type>
 		<type fullname="MenuPageManager">
+			<method name="CloseSettings"/>
+			<method name="OpenSettings"/>
 			<method name="StartGame"/>
 		</type>
 	</assembly>
