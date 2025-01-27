@@ -435,7 +435,8 @@
             "fullManagedTypeName": "UnityEngine.Renderer",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Scenes/MainScene.unity"
+                "Assets/Scenes/MainScene.unity",
+                "Assets/Scenes/Menu.unity"
             ]
         },
         {
@@ -490,7 +491,8 @@
             "fullManagedTypeName": "UnityEngine.SpriteRenderer",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Scenes/MainScene.unity"
+                "Assets/Scenes/MainScene.unity",
+                "Assets/Scenes/Menu.unity"
             ]
         },
         {

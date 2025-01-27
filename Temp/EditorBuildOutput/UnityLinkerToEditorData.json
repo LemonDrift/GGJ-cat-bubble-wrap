@@ -361,7 +361,8 @@
           {
             "name": "Renderer",
             "scenes": [
-              "Assets/Scenes/MainScene.unity"
+              "Assets/Scenes/MainScene.unity",
+              "Assets/Scenes/Menu.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -417,7 +418,8 @@
           {
             "name": "SpriteRenderer",
             "scenes": [
-              "Assets/Scenes/MainScene.unity"
+              "Assets/Scenes/MainScene.unity",
+              "Assets/Scenes/Menu.unity"
             ],
             "dependencyType": 0,
             "icon": null
