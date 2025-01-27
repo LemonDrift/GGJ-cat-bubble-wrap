@@ -10,6 +10,7 @@ public class OwnerController : MonoBehaviour
     public Animator ownerAnimator;
     public GameObject[] ownerEmotionSprites;
     public Sprite ownerAngrySprite;
+    public Sprite ownerNormalSprite;
     public GameObject ownerWarning;
 
     // State properties
@@ -37,6 +38,11 @@ public class OwnerController : MonoBehaviour
         {
             turnBackCoroutine = StartCoroutine(RandomTurnBack());
         }
+        
+        // reset the owner angry state and tolerance
+        caughtChancesRemaining = 2;
+        ownerEmotionSprites[0].GetComponent<SpriteRenderer>().sprite = ownerNormalSprite;
+        ownerEmotionSprites[1].GetComponent<SpriteRenderer>().sprite = ownerNormalSprite;
     }
 
     public void StopOwnerActivity()

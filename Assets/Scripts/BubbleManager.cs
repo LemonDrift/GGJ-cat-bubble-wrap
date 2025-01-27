@@ -56,7 +56,7 @@ public class BubbleManager : MonoBehaviour
         Debug.Log($"Bubbles popped: {poppedBubbles}/{totalBubbles}");
 
         // Check for win condition
-        if (poppedBubbles == totalBubbles)
+        if (poppedBubbles >= totalBubbles)
         {
             gameManager.EndGame(true);
         }
