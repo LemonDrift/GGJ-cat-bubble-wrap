@@ -8,10 +8,14 @@ public class OwnerController : MonoBehaviour
     // Reference to GameManager
     public GameManager gameManager;
     public Animator ownerAnimator;
+    public GameObject[] ownerEmotionSprites;
+    public Sprite ownerAngrySprite;
+    public GameObject ownerWarning;
 
     // State properties
     [SerializeField] private TextMeshProUGUI ownerStatusText;
     private bool isTurningBack = false; // Tracks if the owner is turning back
+    private int caughtChancesRemaining = 2;
 
     // Timer properties
     public float minCheckInterval = 3.0f; // Minimum time before the owner checks
@@ -53,6 +57,12 @@ public class OwnerController : MonoBehaviour
             float waitTime = Random.Range(minCheckInterval, maxCheckInterval);
             yield return new WaitForSeconds(waitTime);
 
+            // Warn the player than owner is turning, set it active
+            ownerWarning.SetActive(true);
+            // Wait for 0.4 second before turning back
+            yield return new WaitForSeconds(0.4f);
+            ownerWarning.SetActive(false);
+            
             // Turn back to check the cat
             TurnBack();
         }
@@ -66,7 +76,16 @@ public class OwnerController : MonoBehaviour
         // Check the cat paw's status, if it is in animation, end the game
         if (CatController.Instance.IsCatPoppingBubbles())
         {
-            gameManager.EndGame(false);
+            caughtChancesRemaining -= 1;
+            ownerEmotionSprites[1-caughtChancesRemaining].GetComponent<SpriteRenderer>().sprite = ownerAngrySprite;
+            if (caughtChancesRemaining <= 0)
+            {
+                gameManager.EndGame(false);
+            }
+            else
+            {
+                Debug.Log("OwnerController: Owner caught the cat popping bubbles!");
+            }
         }
         
         if (ownerAnimator != null)
@@ -102,8 +121,16 @@ public class OwnerController : MonoBehaviour
             // Check if the cat is actively popping bubbles
             if (CatController.Instance.IsCatPoppingBubbles())
             {
-                Debug.Log("Owner caught the cat popping bubbles!");
-                gameManager.EndGame(false);
+                caughtChancesRemaining -= 1;
+                ownerEmotionSprites[1-caughtChancesRemaining].GetComponent<SpriteRenderer>().sprite = ownerAngrySprite;
+                if (caughtChancesRemaining <= 0)
+                {
+                    gameManager.EndGame(false);
+                }
+                else
+                {
+                    Debug.Log("OwnerController: Owner caught the cat popping bubbles!");
+                }
             }
             else
             {

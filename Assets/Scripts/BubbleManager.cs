@@ -38,7 +38,7 @@ public class BubbleManager : MonoBehaviour
             
             Sprite[] poppedSprites = GetPoppedBubbleSprites();
             bubble.SetManager(this, originalBubbleSprite, poppedSprites);
-            }
+        }
     }
 
     private Sprite[] GetPoppedBubbleSprites()
